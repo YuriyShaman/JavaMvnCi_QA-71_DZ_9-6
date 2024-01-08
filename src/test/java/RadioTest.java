@@ -26,7 +26,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test //
+    @Test
     public void testNextStations_9next() {
         Radio radio = new Radio();
         radio.setCarrentStation(9);
