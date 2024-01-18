@@ -1,38 +1,69 @@
 public class Radio {
 
-    private int carrentStation;
-    private int carrentVolume;
+    private int minCarrentStation = 0;
+    private int carrentStation = minCarrentStation;
+    private int maxCarrentStation = 9;
 
-    public void next() {
+    public Radio(int minCarrentStation, int maxCarrentStation) {
 
-        if (carrentStation != 9) {
-            carrentStation++;
-        } else {
-            carrentStation = 0;
-        }
+        this.minCarrentStation = minCarrentStation;
+        this.maxCarrentStation = maxCarrentStation;
+        this.carrentStation = minCarrentStation;
+
+        System.out.println("Макс. Радиостанция  № " + maxCarrentStation);
+        System.out.println("Мин. Радиостанция  №  " + minCarrentStation);
     }
 
-    public void prev() {
-        if (carrentStation != 0) {
-            carrentStation--;
-        } else {
-            carrentStation = 9;
-        }
+    public Radio(int size) {
+        maxCarrentStation = minCarrentStation + size;
+
+
+        System.out.println("Макс. Радиостанция  № " + maxCarrentStation);
+    }
+
+    public int getMinCarrentStation() {
+        return minCarrentStation;
+    }
+
+    public int getMaxCarrentStation() {
+        return maxCarrentStation;
     }
 
     public int getCarrentStation() {
         return carrentStation;
     }
 
-    public void setCarrentStation(int carentStation) {
-        if (carentStation < 0) {
+    public void setCarrentStation(int carrentStation) {
+        if (carrentStation <= minCarrentStation) {
             return;
         }
-        if (carentStation > 9) {
+        if (carrentStation > maxCarrentStation) {
             return;
         }
-        this.carrentStation = carentStation;
+
+        this.carrentStation = carrentStation;
     }
+
+    public void next() {
+        if (carrentStation != maxCarrentStation) {
+            carrentStation++;
+        } else {
+            carrentStation = minCarrentStation;
+        }
+    }
+
+    public void prev() {
+        if (carrentStation != minCarrentStation) {
+            carrentStation--;
+        } else {
+            carrentStation = maxCarrentStation;
+        }
+    }
+
+
+
+
+    private int carrentVolume;
 
     public void up() {
         if (carrentVolume < 100) {
@@ -61,7 +92,6 @@ public class Radio {
         if (carrentVolume < 0) {
             return;
         }
-
         this.carrentVolume = carrentVolume;
     }
 }
