@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
-    @Test
+    @Test //===
     public void testFullSizeStations() {   // Граници номеров полного диапазона радиостанций (метод size)
         Radio radio = new Radio(9);
         Assertions.assertEquals(0, radio.getMinCarrentStation());
